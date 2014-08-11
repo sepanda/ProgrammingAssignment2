@@ -4,7 +4,7 @@
 ##      - output is a list of functions (use names on output to see list)
 ## the output of makeCacheMatrix is passed to cacheSolve
 ##      - the inverse of the matrix is either computed or simply
-##        returned without computing if it has already been computer.           
+##        returned without computing if it has already been computed.           
 
 ## makeCacheMatrix outputs a list to
 ## 1. set the value of the matrix 
@@ -30,13 +30,11 @@ makeCacheMatrix <- function(x = matrix()) {
         list(set=set, get=get, setinv=setinv, getinv=getinv)
 }
 
-
 ## cacheSolve
 ## Grabs the inverse matrix from the cache if it exists
 ## if not it computes the inverse using the solve function.
 ## Note: This function assumes the input matrix is invertible.
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
         inv <- x$getinv()
         if(!is.null(inv)){ # if inv is not null, i.e has a value
                 message("grabbing cached inverse") #inform user
