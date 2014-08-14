@@ -1,5 +1,5 @@
-## The following functions take a given matrix and creates a "matrix object"
-## allowing the inverse matrix to be computed and cache accesible.
+## The following functions take a given matrix and create a "matrix object"
+## allowing the inverse matrix to be computed and cache accessible.
 ## Input matrix into makeCacheMatrix
 ##      - output is a list of functions (use names on output to see list)
 ## the output of makeCacheMatrix is passed to cacheSolve
@@ -21,7 +21,7 @@ makeCacheMatrix <- function(x = matrix()) {
                 x
         }
         setinv <- function(sol){ # function to set the inverse
-                inv <<- sol # assign from outside function enironment
+                inv <<- sol # assign from outside function environment
         }
         getinv <- function(){ # function to get the inverse
                 inv
@@ -38,13 +38,13 @@ cacheSolve <- function(x, ...) {
         inv <- x$getinv()
         if(!is.null(inv)){ # if inv is not null, i.e has a value
                 message("grabbing cached inverse") #inform user
-                return(inv) # return the cahced inverse
+                return(inv) # return the cached inverse
         }
         else{ # compute the inverse
                 message("computing inverse")
                 mat <- x$get() # get the matrix
                 inv <- solve(mat, ...) # use solve to get inverse
                 x$setinv(inv) # set the new inverse
-                inv # print inverse to console
+                return(inv) # return the computed inverse
         }
 }
